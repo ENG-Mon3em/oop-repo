@@ -1,15 +1,20 @@
-public class Person {
+import java.util.regex.Pattern;
+
+public abstract class Person {
 
     private String name;
     private String address;
     private int age;
-    private int phoneNumber;
+    private String phoneNumber;// String to add 0 in the first (01215348461)
+
+    private final String phoneNumber_pattern = "01\\d\\d\\d\\d\\d\\d\\d\\d\\d"; //regular expression to validate the phone number
+    private final String invalid_message = "invalid phone number ";
 
     public Person() {
     }
 
-    public Person(String name,int age,int phoneNumber,String address) {
-        this.phoneNumber = phoneNumber;
+    public Person(String name,int age,String phoneNumber,String address) {
+        setPhoneNumber(phoneNumber); // validate the phone number
         this.name = name;
         this.age = age;
         this.address = address;
@@ -40,11 +45,15 @@ public class Person {
         this.name = name;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
+        if (!Pattern.matches(phoneNumber_pattern,phoneNumber)){
+            System.out.println(invalid_message);
+            return;
+        }
         this.phoneNumber = phoneNumber;
     }
 }
