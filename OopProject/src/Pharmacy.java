@@ -1,16 +1,16 @@
 public class Pharmacy {
 
     private String chemist;
-    private int[] workTimes;
+    private int workTime;
     private String[] medicines;
 
     public Pharmacy() {
     }
 
-    public Pharmacy(String chemist, String[] medicines, int[] workTimes) {
+    public Pharmacy(String chemist, String[] medicines, int workTime) {
         this.chemist = chemist;
         this.medicines = medicines;
-        this.workTimes = workTimes;
+        this.workTime = workTime;
     }
 
     public String getChemist() {
@@ -29,11 +29,11 @@ public class Pharmacy {
         this.medicines = medicines;
     }
 
-    public int[] getWorkTimes() {
-        return workTimes;
+    public int getWorkTime() {
+        return workTime;
     }
 
-    public void setWorkTimes(int[] workTimes) {
-        this.workTimes = workTimes;
+    public void setWorkTime(int workTime) {
+        this.workTime = workTime;
     }
 }
