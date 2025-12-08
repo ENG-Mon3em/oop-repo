@@ -7,8 +7,8 @@ public abstract class Person {
     private int age;
     private String phoneNumber;// String to add 0 in the first (01215348461)
 
-    private final String phoneNumber_pattern = "01\\d\\d\\d\\d\\d\\d\\d\\d\\d"; //regular expression to validate the phone number
-    private final String invalid_message = "invalid phone number ";
+    private final String phoneNumberPattern = "01\\d\\d\\d\\d\\d\\d\\d\\d\\d"; //regular expression to validate the phone number
+    private final String invalidMessage = "invalid phone number ";
 
     public Person() {
     }
@@ -50,8 +50,8 @@ public abstract class Person {
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        if (!Pattern.matches(phoneNumber_pattern,phoneNumber)){
-            System.out.println(invalid_message);
+        if (!Pattern.matches(phoneNumberPattern,phoneNumber)){
+            System.out.println(invalidMessage);
             return;
         }
         this.phoneNumber = phoneNumber;

@@ -1,10 +1,10 @@
 public class Patient extends Person {
     private String disease;
-    private Doctor treating_doctor; // الطبيب المتابع لهذا المريض
+    private Doctor treatingDoctor; // الطبيب المتابع لهذا المريض
     private String condition; // types is [Operation, emergency, examination] > حالة المريض يحتاج عمليه ام كشف ام طوارئ
     private Room room; // غرفه المريض
-    private int patient_id;
-    public static int patients_count = 0;// عدد المرضى
+    private int patientId;
+    public static int patientsCount = 0;// عدد المرضى
 
 
     // ######constructors
@@ -19,24 +19,24 @@ public class Patient extends Person {
     }
 
     // without room
-    public Patient(String name, int age, String phoneNumber, String address, String disease, Doctor treating_doctor, String condition) {
+    public Patient(String name, int age, String phoneNumber, String address, String disease, Doctor treatingDoctor, String condition) {
         super(name, age, phoneNumber, address);
         this.disease = disease;
-        this.treating_doctor = treating_doctor;
+        this.treatingDoctor = treatingDoctor;
         this.condition = condition;
-        patients_count++;
-        this.patient_id = patients_count;
+        patientsCount++;
+        this.patientId = patientsCount;
     }
 
     //  full constructor
-    public Patient(String name, int age, String phoneNumber, String address, String disease, Doctor treating_doctor, String condition, Room room) {
+    public Patient(String name, int age, String phoneNumber, String address, String disease, Doctor treatingDoctor, String condition, Room room) {
         super(name, age, phoneNumber, address);
         this.disease = disease;
-        this.treating_doctor = treating_doctor;
+        this.treatingDoctor = treatingDoctor;
         this.condition = condition;
         this.room = room;
-        patients_count++;
-        patient_id = patients_count;
+        patientsCount++;
+        patientId = patientsCount;
     }
 
     // #####getters and setters
@@ -49,12 +49,12 @@ public class Patient extends Person {
         this.disease = disease;
     }
 
-    public Doctor getTreating_doctor() {
-        return treating_doctor;
+    public Doctor getTreatingDoctor() {
+        return treatingDoctor;
     }
 
-    public void setTreating_doctor(Doctor treating_doctor) {
-        this.treating_doctor = treating_doctor;
+    public void setTreatingDoctor(Doctor treatingDoctor) {
+        this.treatingDoctor = treatingDoctor;
     }
 
     public String getCondition() {
@@ -73,16 +73,16 @@ public class Patient extends Person {
         this.room = room;
     }
 
-    public int getPatient_id() {
-        return patient_id;
+    public int getPatientId() {
+        return patientId;
     }
 
-    public void setPatient_id(int patient_id) {
-        this.patient_id = patient_id;
+    public void setPatientId(int patientId) {
+        this.patientId = patientId;
     }
 
-    public static int getPatients_count() {
-        return patients_count;
+    public static int getPatientsCount() {
+        return patientsCount;
     }
 
     // print the details of the object
@@ -91,12 +91,12 @@ public class Patient extends Person {
         return "\n # Patient's details: \n" +
                 "- name: " + getName() + "\n" +
                 "- age: " + getAge()+"\n" +
-                "- id: " + getPatient_id() + "\n" +
+                "- id: " + getPatientId() + "\n" +
                 "- address: " + getAddress() + "\n" +
                 "- phone number: " + getPhoneNumber() + "\n" +
                 "- Disease: " + getDisease() + "\n" +
                 "- Condition: " + getCondition() + "\n" +
-                "- Treating doctor: " + getTreating_doctor().getName() + "\n" +
+                "- Treating doctor: " + getTreatingDoctor().getName() + "\n" +
                 "- room id: " + ((getRoom() == null)? "no room" : getRoom().getRoomNumber()) + "\n" + // check if he has a room or no
                 "------------------------------------------";
     }

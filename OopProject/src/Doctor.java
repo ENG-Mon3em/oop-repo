@@ -4,9 +4,9 @@ public class Doctor extends Person {
     private String specialization; // التخصص
     private String degree; //
     private int salary;
-    private String working_hours;
-    private final String working_hours_pattern = "\\d\\d:\\d\\d - \\d\\d:\\d\\d";
-    private final String invalid_message = "invalid \"working hours\" the pattern is \"00:00 - 00:00\" ";
+    private String workingHours;
+    private final String workingHoursPattern = "\\d\\d:\\d\\d - \\d\\d:\\d\\d";
+    private final String invalidMessage = "invalid \"working hours\" the pattern is \"00:00 - 00:00\" ";
 
 
     // ######constructors
@@ -19,9 +19,9 @@ public class Doctor extends Person {
         super(name, age, phoneNumber, address);
     }
     // full constructor
-    public Doctor(String name, int age, String phoneNumber, String address, String working_hours, int salary, String degree, String specialization) {
+    public Doctor(String name, int age, String phoneNumber, String address, String workingHours, int salary, String degree, String specialization) {
         super(name, age, phoneNumber, address);
-        setWorking_hours(working_hours);
+        setWorkingHours(workingHours);
         this.salary = salary;
         this.degree = degree;
         this.specialization = specialization;
@@ -54,16 +54,16 @@ public class Doctor extends Person {
         this.salary = salary;
     }
 
-    public String getWorking_hours() {
-        return working_hours;
+    public String getWorkingHours() {
+        return workingHours;
     }
 
-    public void setWorking_hours(String working_hours) {
-        if (!Pattern.matches( working_hours_pattern,working_hours)){
-            System.out.println(invalid_message);
+    public void setWorkingHours(String workingHours) {
+        if (!Pattern.matches(workingHoursPattern, workingHours)){
+            System.out.println(invalidMessage);
             return;
         }
-        this.working_hours = working_hours;
+        this.workingHours = workingHours;
     }
 
     // print the details of the object
@@ -76,7 +76,7 @@ public class Doctor extends Person {
                 "- address: " + getAddress() + "\n" +
                 "- phone number: " + getPhoneNumber() + "\n" +
                 "- Specialization: " + getSpecialization() + "\n" +
-                "- Working hours: " + getWorking_hours() + "\n" +
+                "- Working hours: " + getWorkingHours() + "\n" +
                 "------------------------------------------";
     }
 }
