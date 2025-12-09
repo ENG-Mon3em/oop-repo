@@ -1,5 +1,3 @@
-import java.util.regex.Pattern;
-
 public abstract class Person {
 
     private String name;
@@ -7,13 +5,11 @@ public abstract class Person {
     private int age;
     private String phoneNumber;// String to add 0 in the first (01215348461)
 
-    private final String phoneNumberPattern = "01\\d\\d\\d\\d\\d\\d\\d\\d\\d"; //regular expression to validate the phone number
-    private final String invalidMessage = "invalid phone number ";
 
     public Person() {
     }
 
-    public Person(String name,int age,String phoneNumber,String address) {
+    public Person(String name, int age, String phoneNumber, String address) {
         setPhoneNumber(phoneNumber); // validate the phone number
         this.name = name;
         this.age = age;
@@ -50,10 +46,6 @@ public abstract class Person {
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        if (!Pattern.matches(phoneNumberPattern,phoneNumber)){
-            System.out.println(invalidMessage);
-            return;
-        }
         this.phoneNumber = phoneNumber;
     }
 }

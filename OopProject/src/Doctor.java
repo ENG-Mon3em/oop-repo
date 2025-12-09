@@ -1,12 +1,8 @@
-import java.util.regex.Pattern;
-
 public class Doctor extends Person {
     private String specialization; // التخصص
     private String degree; //
     private int salary;
-    private String workingHours;
-    private final String workingHoursPattern = "\\d\\d:\\d\\d - \\d\\d:\\d\\d";
-    private final String invalidMessage = "invalid \"working hours\" the pattern is \"00:00 - 00:00\" ";
+    private int workingHours;
 
 
     // ######constructors
@@ -19,7 +15,7 @@ public class Doctor extends Person {
         super(name, age, phoneNumber, address);
     }
     // full constructor
-    public Doctor(String name, int age, String phoneNumber, String address, String workingHours, int salary, String degree, String specialization) {
+    public Doctor(String name, int age, String phoneNumber, String address, int workingHours, int salary, String degree, String specialization) {
         super(name, age, phoneNumber, address);
         setWorkingHours(workingHours);
         this.salary = salary;
@@ -54,15 +50,11 @@ public class Doctor extends Person {
         this.salary = salary;
     }
 
-    public String getWorkingHours() {
+    public int getWorkingHours() {
         return workingHours;
     }
 
-    public void setWorkingHours(String workingHours) {
-        if (!Pattern.matches(workingHoursPattern, workingHours)){
-            System.out.println(invalidMessage);
-            return;
-        }
+    public void setWorkingHours(int workingHours) {
         this.workingHours = workingHours;
     }
 
