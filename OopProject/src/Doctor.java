@@ -9,6 +9,7 @@ public class Doctor extends Person {
 
 
     public Doctor() {
+        super("",0,"","");
     }
     // basic constructor
     public Doctor(String name, int age, String phoneNumber, String address) {
