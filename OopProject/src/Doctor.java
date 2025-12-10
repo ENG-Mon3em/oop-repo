@@ -9,6 +9,7 @@ public class Doctor extends Person {
 
 
     public Doctor() {
+        super("",0,"","");
     }
 
     // basic constructor

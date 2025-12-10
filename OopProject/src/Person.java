@@ -48,4 +48,13 @@ public abstract class Person {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
+    public static Person search(Person[] persons, String name){
+        for (Person person :persons) {
+            if (person.getName().equalsIgnoreCase(name)){
+                return person;
+            }
+        }
+        return null;
+    }
 }
