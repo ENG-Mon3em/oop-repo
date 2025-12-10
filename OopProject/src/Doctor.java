@@ -1,74 +1,38 @@
 public class Doctor extends Person {
-    private String specialization; // التخصص
-    private String degree; //
-    private int salary;
-    private int workingHours;
+    private String specialization;
 
+    //  Composition  :     assigned patients
+    private Patient[] assignedPatients = new Patient[20];
+    private int patientCount = 0;
 
-    // ######constructors
-
-
-    public Doctor() {
-    }
-    // basic constructor
-    public Doctor(String name, int age, String phoneNumber, String address) {
+    public Doctor(String name, int age, String phoneNumber, String address, String specialization) {
         super(name, age, phoneNumber, address);
-    }
-    // full constructor
-    public Doctor(String name, int age, String phoneNumber, String address, int workingHours, int salary, String degree, String specialization) {
-        super(name, age, phoneNumber, address);
-        setWorkingHours(workingHours);
-        this.salary = salary;
-        this.degree = degree;
         this.specialization = specialization;
     }
 
-    // ##### getters and setters
+    public String getSpecialization() { return specialization; }
+    public void setSpecialization(String specialization) { this.specialization = specialization; }
 
-
-    public String getSpecialization() {
-        return specialization;
+    // addPatient
+    public void addPatient(Patient p) {
+        if (patientCount < 20) {
+            assignedPatients[patientCount++] = p;
+        }
+    }
+        //listPatients
+    public void listPatients() {
+        System.out.println("Patients assigned to Dr. " + getName() + ":");
+        for (int i = 0; i < patientCount; i++) {
+            System.out.println("- " + assignedPatients[i].getName());
+        }
     }
 
-    public void setSpecialization(String specialization) {
-        this.specialization = specialization;
-    }
-
-    public String getDegree() {
-        return degree;
-    }
-
-    public void setDegree(String degree) {
-        this.degree = degree;
-    }
-
-    public int getSalary() {
-        return salary;
-    }
-
-    public void setSalary(int salary) {
-        this.salary = salary;
-    }
-
-    public int getWorkingHours() {
-        return workingHours;
-    }
-
-    public void setWorkingHours(int workingHours) {
-        this.workingHours = workingHours;
-    }
-
-    // print the details of the object
     @Override
-    public String toString(){
-        return "\n # Doctor's details: \n" +
-                "- name: " + getName() + "\n" +
-                "- age: " + getAge()+"\n" +
-                "- degree: " + getDegree() + "\n" +
-                "- address: " + getAddress() + "\n" +
-                "- phone number: " + getPhoneNumber() + "\n" +
-                "- Specialization: " + getSpecialization() + "\n" +
-                "- Working hours: " + getWorkingHours() + "\n" +
-                "------------------------------------------";
+    public void display() {
+        System.out.println("Doctor Name: " + getName());
+        System.out.println("Age: " + getAge());
+        System.out.println("Phone: " + getPhoneNumber());
+        System.out.println("Address: " + getAddress());
+        System.out.println("Specialization: " + specialization);
     }
 }
