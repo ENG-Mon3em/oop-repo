@@ -10,7 +10,7 @@ public class Patient extends Person {
     // ######constructors
 
     public Patient(){
-
+        super("",0,"","");
     }
 
     // basic constructor
@@ -96,7 +96,7 @@ public class Patient extends Person {
                 "- phone number: " + getPhoneNumber() + "\n" +
                 "- Disease: " + getDisease() + "\n" +
                 "- Condition: " + getCondition() + "\n" +
-                "- Treating doctor: " + getTreatingDoctor().getName() + "\n" +
+                "- Treating doctor: " + ((getTreatingDoctor() == null)? "no doctor added" : getTreatingDoctor().getName()) + "\n" +
                 "- room id: " + ((getRoom() == null)? "no room" : getRoom().getRoomNumber()) + "\n" + // check if he has a room or no
                 "------------------------------------------";
     }
