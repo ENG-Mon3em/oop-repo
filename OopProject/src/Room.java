@@ -1,39 +1,38 @@
 public class Room {
+    private int roomNumber;
+    private boolean isOccupied;
 
-    private int RoomNumber;
-    private String RoomType;
-    private boolean RoomState;
+    // Composition: patients in room
+    private Patient[] patients = new Patient[20];
+    private int patientCount = 0;
 
-    public Room() {
+    public Room(int roomNumber) {
+        this.roomNumber = roomNumber;
+        this.isOccupied = false;
     }
 
-    public Room(int roomNumber, boolean roomState, String roomType) {
-        RoomNumber = roomNumber;
-        RoomState = roomState;
-        RoomType = roomType;
+    public int getRoomNumber() { return roomNumber; }
+    public boolean isOccupied() { return isOccupied; }
+
+    public void occupy() { isOccupied = true; }
+    public void vacate() { isOccupied = false; }
+
+    //addPatient
+    public void addPatient(Patient p) {
+        if (patientCount < 20) {
+            patients[patientCount++] = p;
+            occupy();
+        }
+    }
+    //listPatients
+    public void listPatients() {
+        System.out.println("Patients in Room " + roomNumber + ":");
+        for (int i = 0; i < patientCount; i++) {
+            System.out.println("- " + patients[i].getName());
+        }
     }
 
-    public int getRoomNumber() {
-        return RoomNumber;
-    }
-
-    public void setRoomNumber(int roomNumber) {
-        RoomNumber = roomNumber;
-    }
-
-    public boolean isRoomState() {
-        return RoomState;
-    }
-
-    public void setRoomState(boolean roomState) {
-        RoomState = roomState;
-    }
-
-    public String getRoomType() {
-        return RoomType;
-    }
-
-    public void setRoomType(String roomType) {
-        RoomType = roomType;
+    public void display() {
+        System.out.println("Room " + roomNumber + " - " + (isOccupied ? "Occupied" : "Available"));
     }
 }

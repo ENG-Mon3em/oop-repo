@@ -1,39 +1,21 @@
 public class Pharmacy {
+    //// Aggregation  :  Medicines
+    private String[] medicines = new String[50];
+    private int medicineCount = 0;
 
-    private String chemist;
-    private int workTime;
-    private String[] medicines;
-
-    public Pharmacy() {
+    public void addMedicine(String name) {
+        if (medicineCount < 50) {
+            medicines[medicineCount++] = name;
+            System.out.println(name + " added to pharmacy.");
+        } else {
+            System.out.println("Pharmacy is full!");
+        }
     }
 
-    public Pharmacy(String chemist, String[] medicines, int workTime) {
-        this.chemist = chemist;
-        this.medicines = medicines;
-        this.workTime = workTime;
-    }
-
-    public String getChemist() {
-        return chemist;
-    }
-
-    public void setChemist(String chemist) {
-        this.chemist = chemist;
-    }
-
-    public String[] getMedicines() {
-        return medicines;
-    }
-
-    public void setMedicines(String[] medicines) {
-        this.medicines = medicines;
-    }
-
-    public int getWorkTime() {
-        return workTime;
-    }
-
-    public void setWorkTime(int workTime) {
-        this.workTime = workTime;
+    public void listMedicines() {
+        System.out.println("Medicines in Pharmacy:");
+        for (int i = 0; i < medicineCount; i++) {
+            System.out.println("- " + medicines[i]);
+        }
     }
 }
