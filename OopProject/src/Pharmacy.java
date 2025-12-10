@@ -2,14 +2,13 @@ public class Pharmacy {
 
     private String chemist;
     private int workTime;
-    private String[] medicines;
+    private medicines medicines = new medicines(); //كلاس بها الادوية المتاحة (Composition) بدون الصيدلية لن يوجد الكلاس ادوية
 
     public Pharmacy() {
     }
 
-    public Pharmacy(String chemist, String[] medicines, int workTime) {
+    public Pharmacy(String chemist, int workTime) {
         this.chemist = chemist;
-        this.medicines = medicines;
         this.workTime = workTime;
     }
 
@@ -21,11 +20,11 @@ public class Pharmacy {
         this.chemist = chemist;
     }
 
-    public String[] getMedicines() {
+    public medicines getMedicines() {
         return medicines;
     }
 
-    public void setMedicines(String[] medicines) {
+    public void setMedicines(medicines medicines) {
         this.medicines = medicines;
     }
 
@@ -35,5 +34,10 @@ public class Pharmacy {
 
     public void setWorkTime(int workTime) {
         this.workTime = workTime;
+    }
+
+    @Override
+    public String toString() {
+        return "Pharmacy{" + "chemist='" + chemist + '\'' + ", workTime=" + workTime + ", medicines=" + medicines + '}';
     }
 }

@@ -10,10 +10,12 @@ public class Doctor extends Person {
 
     public Doctor() {
     }
+
     // basic constructor
     public Doctor(String name, int age, String phoneNumber, String address) {
         super(name, age, phoneNumber, address);
     }
+
     // full constructor
     public Doctor(String name, int age, String phoneNumber, String address, int workingHours, int salary, String degree, String specialization) {
         super(name, age, phoneNumber, address);
@@ -60,10 +62,10 @@ public class Doctor extends Person {
 
     // print the details of the object
     @Override
-    public String toString(){
+    public String toString() {
         return "\n # Doctor's details: \n" +
                 "- name: " + getName() + "\n" +
-                "- age: " + getAge()+"\n" +
+                "- age: " + getAge() + "\n" +
                 "- degree: " + getDegree() + "\n" +
                 "- address: " + getAddress() + "\n" +
                 "- phone number: " + getPhoneNumber() + "\n" +
