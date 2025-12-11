@@ -3,6 +3,7 @@ public class Doctor extends Person {
     private String degree; //
     private int salary;
     private int workingHours;
+    private int id;
 
 
     // ######constructors
@@ -59,6 +60,14 @@ public class Doctor extends Person {
 
     public void setWorkingHours(int workingHours) {
         this.workingHours = workingHours;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     // print the details of the object
