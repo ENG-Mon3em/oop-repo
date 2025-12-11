@@ -3,17 +3,16 @@ import java.util.Arrays;
 
 public class MainClass {
 
-    // 1. تعريف المصفوفات بحجم أقصى (Max Capacity)
     static final int MAX_SIZE = 50;
 
     static Doctor[] doctors = new Doctor[MAX_SIZE];
-    static int docCount = 0; // عداد الأطباء الحالي
+    static int docCount = 0;
 
     static Patient[] patients = new Patient[MAX_SIZE];
-    static int patCount = 0; // عداد المرضى الحالي
+    static int patCount = 0;
 
     static Room[] rooms = new Room[MAX_SIZE];
-    static int roomCount = 0; // عداد الغرف الحالي
+    static int roomCount = 0;
 
     static Pharmacy pharmacy;
     static Scanner scanner = new Scanner(System.in);
@@ -21,8 +20,6 @@ public class MainClass {
     public static void main(String[] args) {
         initializePharmacy();
 
-        // إضافة بيانات تجريبية لسهولة الاختبار
-        // يجب أن تكون كلاسات Doctor و Patient متاحة ليعمل هذا الجزء
         doctors[docCount++] = new Doctor("Dr. Khalid", 45, "0100", "Riyadh", 8, 20000, "MD", "Surgery");
         doctors[docCount - 1].setId(101);
         doctors[docCount++] = new Doctor("Dr. Mona", 32, "0111", "Jeddah", 6, 15000, "PhD", "Pediatrics");
@@ -62,7 +59,7 @@ public class MainClass {
             System.out.println("2. Remove Doctor");
             System.out.println("3. List Doctors");
             System.out.println("4. Search Doctor");
-            System.out.println("5. Sort Doctors by ID"); // <--- الخيار الجديد
+            System.out.println("5. Sort Doctors by ID");
             System.out.println("6. Back");
             System.out.print("Choose: ");
             choice = scanner.nextInt();
@@ -73,7 +70,7 @@ public class MainClass {
                 case 2: removeDoctor(); break;
                 case 3: listDoctors(); break;
                 case 4: searchDoctor(); break;
-                case 5: sortDoctorsById(); break; // <--- استدعاء الدالة
+                case 5: sortDoctorsById(); break;
                 case 6: return;
             }
         } while (true);
@@ -97,7 +94,6 @@ public class MainClass {
         Doctor d = new Doctor(name, age, phone, address, hours, salary, degree, spec);
         System.out.print("Set ID (Integer): "); d.setId(scanner.nextInt()); scanner.nextLine();
 
-        // الإضافة في المصفوفة وزيادة العداد
         doctors[docCount] = d;
         docCount++;
         System.out.println("Doctor added.");
@@ -108,7 +104,6 @@ public class MainClass {
         String name = scanner.nextLine();
         int index = -1;
 
-        // البحث عن الـ Index
         for (int i = 0; i < docCount; i++) {
             if (doctors[i].getName().equalsIgnoreCase(name)) {
                 index = i;
@@ -117,12 +112,11 @@ public class MainClass {
         }
 
         if (index != -1) {
-            // Shift elements logic (إزاحة العناصر لملء الفراغ)
             for (int i = index; i < docCount - 1; i++) {
                 doctors[i] = doctors[i + 1];
             }
-            doctors[docCount - 1] = null; // تنظيف الخانة الأخيرة
-            docCount--; // تقليل العداد
+            doctors[docCount - 1] = null;
+            docCount--;
             System.out.println("Doctor removed.");
         } else {
             System.out.println("Doctor not found.");
@@ -148,19 +142,17 @@ public class MainClass {
         System.out.println("Not found.");
     }
 
-    // <--- الدالة الجديدة لترتيب الأطباء حسب الـ ID --->
+
     private static void sortDoctorsById() {
         if (docCount < 2) {
             System.out.println("Not enough doctors to sort.");
             return;
         }
 
-        // خوارزمية الترتيب (Bubble Sort) للترتيب حسب الـ ID
+
         for (int i = 0; i < docCount - 1; i++) {
             for (int j = 0; j < docCount - i - 1; j++) {
-                // مقارنة الأرقام: إذا كان الـ ID الحالي أكبر من التالي، قم بالتبديل
                 if (doctors[j].getId() > doctors[j + 1].getId()) {
-                    // تبديل الأماكن (Swap)
                     Doctor temp = doctors[j];
                     doctors[j] = doctors[j + 1];
                     doctors[j + 1] = temp;
@@ -169,9 +161,7 @@ public class MainClass {
         }
         System.out.println("Doctors sorted by ID successfully. Use List Doctors (option 3) to view the changes.");
     }
-    // <--- نهاية الدالة الجديدة --->
 
-    // ================== 2. PATIENTS ==================
     public static void patientMenu() {
         int choice;
         do {
@@ -207,7 +197,6 @@ public class MainClass {
         System.out.print("Disease: "); String disease = scanner.nextLine();
         System.out.print("Condition: "); String condition = scanner.nextLine();
 
-        // 1. Find Doctor manually from array
         Doctor assignedDoc = null;
         System.out.print("Assign Doctor (Name): ");
         String docName = scanner.nextLine();
@@ -218,7 +207,6 @@ public class MainClass {
             }
         }
 
-        // 2. Find Room manually from array
         Room assignedRoom = null;
         System.out.print("Assign Room (Number): ");
         int rNum = scanner.nextInt(); scanner.nextLine();
@@ -229,7 +217,6 @@ public class MainClass {
             }
         }
 
-        // Full Constructor usage
         Patient p = new Patient(name, age, phone, address, disease, assignedDoc, condition, assignedRoom);
 
         patients[patCount] = p;
@@ -279,7 +266,6 @@ public class MainClass {
         System.out.println("Not found.");
     }
 
-    // ================== 3. PHARMACY ==================
     private static void initializePharmacy() {
         String[] meds = {"Panadol", "Aspirin", "Antibiotic"};
         medicines m = new medicines(meds);
@@ -315,10 +301,8 @@ public class MainClass {
         String newMed = scanner.nextLine();
 
         String[] oldArr = pharmacy.getMedicines().getAvailableMedicines();
-        // إنشاء مصفوفة جديدة أكبر بـ 1
         String[] newArr = new String[oldArr.length + 1];
 
-        // النسخ اليدوي (أو باستخدام System.arraycopy)
         for(int i=0; i<oldArr.length; i++) {
             newArr[i] = oldArr[i];
         }
@@ -340,7 +324,6 @@ public class MainClass {
             System.out.println("Not found."); return;
         }
 
-        // إنشاء مصفوفة أصغر بـ 1
         String[] newArr = new String[oldArr.length - 1];
         int k = 0;
         for (String m : oldArr) {
@@ -367,7 +350,6 @@ public class MainClass {
         System.out.println(Arrays.toString(pharmacy.getMedicines().getAvailableMedicines()));
     }
 
-    // ================== 4. ROOMS ==================
     public static void roomMenu() {
         int choice;
         do {
